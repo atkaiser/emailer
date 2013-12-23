@@ -6,7 +6,7 @@ class SenderController < ApplicationController
     @user = User.find_by_key(key)
     @user.reset_month()
     # See if they have any emails left for the month
-    if @user.sent < @user.limit:
+    if @user.sent < @user.limit
       # If so send the email
       UserMailer.regular_email(@user, "This is an example body").deliver
     end    
