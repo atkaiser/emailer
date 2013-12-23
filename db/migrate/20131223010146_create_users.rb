@@ -5,6 +5,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :provider
       t.string :uid
+      t.string :key
+      t.integer :limit, default: 0
+      t.integer :sent, default: 0
+      t.integer :month, default: 1
 
       t.timestamps
     end

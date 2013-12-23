@@ -20,9 +20,9 @@ class UsersController < ApplicationController
   end
 
 
-def show
+  def show
     @user = User.find(params[:id])
-    UserMailer.regular_email(@user, "This is an example body").deliver
+    @user.reset_month()
   end
 
 end
