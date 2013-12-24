@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
     if self.month != current_month
       self.month = current_month
       self.sent = 0
+      self.save
     end
   end
 

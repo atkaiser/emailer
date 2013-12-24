@@ -5,4 +5,5 @@ Emailer::Application.routes.draw do
   get '/signin' => 'sessions#new', :as => :signin
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure'
+  get '/send' => 'sender#send_out', :as => :send_out
 end

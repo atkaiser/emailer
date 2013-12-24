@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20131223010201) do
     t.string   "email"
     t.string   "provider"
     t.string   "uid"
+    t.string   "key"
+    t.integer  "limit",      default: 0
+    t.integer  "sent",       default: 0
+    t.integer  "month",      default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
