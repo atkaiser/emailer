@@ -1,4 +1,5 @@
-%h3 User
+%h3 User Info
+%div.small-
 %p
   User: #{@user.name}
 %p
@@ -9,3 +10,10 @@
   Limit: #{@user.limit}
 %p
   Sent this Month: #{@user.sent}
+
+= form_tag request_limit_path(@user.id) do
+
+  = label_tag :amount, 'Ask admin to increase monthly limit by'
+  = text_field_tag :amount
+
+  = submit_tag 'Ask'

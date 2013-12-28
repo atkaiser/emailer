@@ -1,3 +1,8 @@
-%h3 Home
-%p
-  Welcome to the web emailer
+%div#main-wrapper
+  %div.row
+    %div.small-12.small-centered.columns{ :style => "text-align:center"}
+      %h1 Welcome to Web Emailer
+  %div.welcome-message{ :style => "text-align:center"}
+    Please sign in to get started:
+  %div.login-btn-wrap
+    = link_to 'Sign in with Google', signin_path, :class => "btn-auth btn-google large"
