@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :correct_user?, :except => [:index]
+  before_filter :correct_user?, :except => [:index, :increase_limit]
 
   def index
+    check_admin?
     @users = User.all
   end
 
@@ -35,6 +36,14 @@ class UsersController < ApplicationController
     request.amount = params[:amount]
     request.save()
     redirect_to @user
+  end
+  
+  def increase_limit
+    check_admin?
+    @user = User.find(params[:id])
+    @user.limit += params[:amount].to_i
+    @user.save()
+    redirect_to users_path
   end
 
 end

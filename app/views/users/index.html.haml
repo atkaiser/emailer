@@ -7,8 +7,11 @@
         %th Email
         %th Registered
         %th Role
-        %th
-        %th
+        %th Sent
+        %th Limit
+        %th Delete User
+        %th Requests
+        %th Add to limit
     %tbody
       - @users.each do |user|
         %tr
@@ -16,7 +19,16 @@
           %td= user.email
           %td= user.created_at.to_date
           %td= user.roles.first.name.titleize unless user.roles.first.nil?
-          %td
-            %a.btn.btn-mini{"data-toggle" => "modal", :href => "#role-options-#{user.id}", :type => "button"} Change role
-            = render user
+          %td= user.sent
+          %td= user.limit
           %td= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user
+          %td
+            - if Request.find_by_user_id(user.id)
+              = "Amount: " + Request.find_by_user_id(user.id).amount.to_s + " "
+              = link_to("Grant", grant_path(Request.find_by_user_id(user.id).id))
+          %td
+            = form_tag increase_limit_path(user.id) do
+            
+              = text_field_tag :amount
+
+              = submit_tag 'Change'
