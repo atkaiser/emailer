@@ -1,22 +1,45 @@
-%h3 User Info
-%div.small-
-%p
-  User: #{@user.name}
-%p
-  Email: #{@user.email if @user.email}
-%p
-  Key: #{@user.key}
-%p
-  Sent this Month: #{@user.sent}
-%p
-  Limit: #{@user.limit}
-- if Request.find_by_user_id(@user.id)
-  %p
-    = "Outstanding request for increase by: " + Request.find_by_user_id(@user.id).amount.to_s
-
-= form_tag request_limit_path(@user.id) do
-
-  = label_tag :amount, 'Ask admin to increase monthly limit by'
-  = text_field_tag :amount
-
-  = submit_tag 'Ask'
+%div  
+  %div.row
+    %div.small-10.small-offset-2.columns
+      %h1 User Info
+  %div.row{ :style => "text_align:right" }
+    %div.small-4.columns{ :style => "text-align:right" }
+      %div.desc
+        User: 
+      %div.desc
+        Email: 
+      %div.desc
+        Key: 
+      %div.desc
+        Sent this Month: 
+      %div.desc
+        Limit: 
+      - if Request.find_by_user_id(@user.id)
+        %div.desc
+          Increase request: 
+    %div.small-8.columns
+      %div.desc
+        #{@user.name}
+      %div.desc
+        #{@user.email if @user.email}
+      %div.desc
+        #{@user.key}
+      %div.desc
+        #{@user.sent}
+      %div.desc
+        #{@user.limit}
+      - if Request.find_by_user_id(@user.id)
+        %div.desc
+          = Request.find_by_user_id(@user.id).amount.to_s
+  %div.row.collapse
+    = form_tag request_limit_path(@user.id), :id => "limit-increase", 'data-abide' => '' do
+    
+      %div.small-4.columns
+        = label_tag :amount, 'Ask admin to increase monthly limit by: ', :class => "right inline"
+      %div.small-3.columns
+        = text_field_tag :amount, '', 'required pattern' => "^(-|[0-9])[0-9]*$$"
+        %small.error Must be an integer
+      %div.small-1.columns
+        %div.button.postfix{ :onclick => 'document.getElementById("limit-increase").submit();'}
+          Ask
+      %div.small-4.columns
