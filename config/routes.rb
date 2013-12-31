@@ -9,4 +9,5 @@ Emailer::Application.routes.draw do
   post '/users/:id/request_limit' => 'users#request_limit', :as => :request_limit
   get '/requests/:id/grant' => 'requests#grant', :as => :grant
   post '/users/:id/increase_limit' => 'users#increase_limit', :as => :increase_limit
+  get '/how_to' => 'home#how_to', :as => :how_to
 end

@@ -1,0 +1,26 @@
+%div.row
+  %div.small-12.small-centered.columns{ :style => "text-align:center"}
+    %h1 How To / Description
+%div.row
+  %div.small-10.small-centered.columns
+    %div.par
+      This is basically an app to send emails out from the command line since
+      I always find it hard to set up. The first step is to login to create 
+      an account. That's all the set-up that you need. You'll have to ask to 
+      increase your limit to get started, but once you have some emails to spare 
+      you can send them by going to:
+%div.row
+  %div.large-12.small-centered.columns
+    %div.email
+      webemailer.herokuapp.com/send?key=Your assinged key&to=To Email Address&body=Content of Email
+%div.row
+  %div.large-12.small-centered.columns
+    %div.email
+      An example is: webemailer.herokuapp.com/send?key=48c4fbe6d1c48315649&to=example@gmail.com&body=Success&subject=Test
+%div.row
+  %div.small-10.small-centered.columns
+    %div.par
+      You can additionally include a subject field. Right now you can't send anything 
+      with spaces in the address, so be careful. The basic use was inteded to use curl 
+      to access the url and thus send the email from a command line script. 
+      Good luck and if you have any questions you can send an email to alextkaiser@gmail.com.
