@@ -7,9 +7,12 @@
 %p
   Key: #{@user.key}
 %p
-  Limit: #{@user.limit}
-%p
   Sent this Month: #{@user.sent}
+%p
+  Limit: #{@user.limit}
+- if Request.find_by_user_id(@user.id)
+  %p
+    = "Outstanding request for increase by: " + Request.find_by_user_id(@user.id).amount.to_s
 
 = form_tag request_limit_path(@user.id) do
 
