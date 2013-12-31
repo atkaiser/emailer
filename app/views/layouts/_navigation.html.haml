@@ -9,6 +9,8 @@
     %ul.left
       - if user_signed_in?
         %li
+          = link_to 'Home', current_user
+        %li
           = link_to 'Logout', signout_path
       - else
         %li
