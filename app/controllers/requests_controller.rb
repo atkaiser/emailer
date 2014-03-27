@@ -10,4 +10,10 @@ class RequestsController < ApplicationController
     redirect_to users_path
   end
 
+  def decline
+    check_admin?
+    @request = Request.find(params[:id])
+    @request.delete()
+    redirect_to users_path
+  end
 end

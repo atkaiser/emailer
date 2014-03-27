@@ -26,6 +26,7 @@
             - if Request.find_by_user_id(user.id)
               = "Amount: " + Request.find_by_user_id(user.id).amount.to_s + " "
               = link_to("Grant", grant_path(Request.find_by_user_id(user.id).id))
+              = link_to("Decline", decline_path(Request.find_by_user_id(user.id).id))
           %td
             = form_tag increase_limit_path(user.id) do
             
